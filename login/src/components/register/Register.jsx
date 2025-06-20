@@ -22,7 +22,7 @@ const Register = () => {
     setErrorMessage("");
 
     axios
-      .post(`${import.meta.env.VITE_API_URL}/register`, { name, email, password })
+      .post(`${import.meta.env.VITE_API_URL}/api/register`, { name, email, password })
       .then((result) => {
         console.log(result);
         setSuccessMessage("You have successfully registered!");

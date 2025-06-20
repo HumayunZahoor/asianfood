@@ -47,7 +47,7 @@ mongoose.connect(process.env.MONGO_URL);
 
 //..................Login.................................
 
-app.post("/login", (req, res) => {
+app.post("/api/login", (req, res) => {
   const { email, password } = req.body;
 
   Employee.findOne({ email: email })
@@ -96,7 +96,7 @@ app.post("/login", (req, res) => {
 
 //.........................register...............................
 
-app.post("/register", (req, res) => {
+app.post("/api/register", (req, res) => {
   Employee.create(req.body)
     .then((user) => res.json(user))
     .catch((err) => res.json(err));
@@ -107,7 +107,7 @@ app.post("/register", (req, res) => {
 //...............................................................................................................//
 
 //......................... CONTACT ...............................
-app.post("/contact", async (req, res) => {
+app.post("/api/contact", async (req, res) => {
   try {
     const { name, email, message } = req.body;
     if (!name || !email || !message) {
@@ -130,7 +130,7 @@ app.post("/contact", async (req, res) => {
 
 //...............cart...................................
 
-app.post("/cart", async (req, res) => {
+app.post("/api/cart", async (req, res) => {
   try {
     const { productId, name, description, price, image, username, email } =
       req.body;
@@ -160,7 +160,7 @@ app.post("/cart", async (req, res) => {
 
 
 //............................get.....................
-app.get("/orders/:userEmail", async (req, res) => {
+app.get("/api/orders/:userEmail", async (req, res) => {
   try {
     // Fetch all orders for the specified user from the database
     const orders = await Cart.find({ email: req.params.userEmail }); // Match the schema field

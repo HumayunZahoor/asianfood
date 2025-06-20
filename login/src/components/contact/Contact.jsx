@@ -25,7 +25,7 @@ const Contact = () => {
 
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/contact`,
+        `${import.meta.env.VITE_API_URL}/api/contact`,
         formData
       );
 
